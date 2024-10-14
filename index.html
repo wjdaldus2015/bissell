@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/Draggable.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.1.5/dist/lenis.min.js"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/swiper@6/swiper-bundle.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@6/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="./assets/css/layout.css">
+    <link rel="stylesheet" href="./assets/css/main.css">
+    
+
+    <script src="./assets/js/index.js" defer></script>
+</head>
+<body>    <div class="wrapper">
+        <div class="top-scroll">
+            <div class="scroll-inner"></div>
+        </div>
+       
+        <header id="header">
+           
+            <div class="group-title">
+              <h1 class="logo"></h1>
+                <svg width="161" height="41" viewBox="0 0 161 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M53.223 6.374c.136.546.313 1.137.358 1.733.261 3.557-1.227 6.989-3.807 8.477-3.909 2.245-6.494-2.17-5.659-5.88.586-2.597 1.915-5.91 4.835-6.807.807-.25 1.381.114 2.074.04.66-.068 1.273-.585 1.648-.972.41-.42.955-1.704 1.795-1.54.438.086.87.83.995 1.319.488 1.909-1.404 2.682-2.245 3.63h.006Zm-5.648 3.904c-.227 1.454.49 3.068 1.67 1.931.66-.63 1.262-2.329 1.177-3.659-.062-1.01-.398-2.005-1.324-1.619-.79.324-1.386 2.46-1.523 3.347Z" fill="#ED1B2F"></path>
+                  <path d="M32.428 18.948c-.403.852-1.267 1.563-1.778 1.886-.494-1.619.045-5.062-.239-7.022-.148-1.017-.5-1.415-1.17-1.716-.398-.182-1.04-.011-1.313.13-.159-.312-.647-.857-1.67-.789-2.71.165-5.847 3.307-6.91 5.727-1.732 3.943.024 7.176 2.007 7.693 1.113.29 2.392.057 3.426-.59 1.255-.79 2.17-2.03 2.386-2.035.17-.005.193.773-.017 1.017-.267.301-1.085.853-1.449 1.12-1.392 1.034-3.892 3.255-4.846 4.812-1.103 1.812-1.722 4.824-.353 6.574 2.091 2.676 6.847 1.352 8.597-2.466.681-1.483 1.369-4.227 1.494-6.108.085-1.205-.074-2.148.097-2.443.55-.943 2.096-1.165 2.613-2.284.216-.46.239-1.097.267-1.733-.244-1.029-.67-1.705-1.136-1.767l-.006-.006Zm-5.636 11.909c-.29.972-.92 2.278-2.034 2.455-.807.13-1.205-.682-1.046-1.586.222-1.272 2.546-4.096 3.347-4.352.244-.08.011 2.54-.267 3.489v-.006Zm-.415-12.977c-.307.807-1.665 2.636-2.437 2.563-1.478-.137-1.057-1.75-.71-2.665.869-2.262 3.329-3.386 3.59-3.205.262.182.057 1.966-.448 3.307h.005Z" fill="#ED1B2F"></path>
+                  <path d="M46.115 17.09c-.897-.59-1.983-.38-2.71-.005-.312-1.7-.068-5.046-.352-7.012-.148-1.017-.688-1.528-1.352-1.83-.404-.181-1.188-.039-1.46.103-.16-.312-.392-.937-1.41-.875-2.715.165-5.647 3.375-6.71 5.796-1.733 3.943.154 7.096 2.012 7.692 1.09.353 2.392.057 3.42-.59 1.256-.79 2.17-2.029 2.386-2.034.17 0 .324.79.108 1.034-.261.3-1.136.965-1.5 1.233-1.392 1.034-3.477 3.187-4.426 4.744-1.108 1.812-1.55 4.562-.187 6.312 2.085 2.682 6.863 1.466 8.619-2.358.676-1.483 1.165-3.733 1.193-5.716.017-1.204-.21-2.34-.045-2.636.568-1.028 2.954-.949 3.465-2.068.21-.46-.096-1.17-1.045-1.795l-.006.005Zm-6.187 10.011c-.284.978-1.051 2.273-2.165 2.455-.806.13-1.09-.67-1.011-1.585.136-1.477 2.727-4.33 3.528-4.585.25-.08-.08 2.772-.358 3.715h.006Zm-.784-13.113c-.239.938-1.557 2.977-2.59 2.983-1.484.006-.904-2.17-.552-3.08.864-2.26 3.034-3.29 3.295-3.107.262.181.205 1.818-.153 3.204ZM17.985 4.83c-2.369.55-7.642 3.289-10.136 5.579-2.863 2.63-4.55 5.619-4.227 8.232.562 4.512 5.074 2.728 5.221 3.131.148.404-2.704 1.506-5.556 6.443-2.574 4.438-1.478 7.449-.188 8.932 1.955 2.244 7.67 2.023 11.034-.54 2.84-2.159 6.13-6.392 5.92-9.062-.09-1.188-1.233-1.983-2.272-2.063-1.262-.102-2.273 1.87-2.642 2.67-1.074 2.313-3.227 4.643-5.222 5.035-1.028.204-2.324-.426-2.505-1.381-.307-1.602.818-3.472 1.568-4.42 1.494-1.881 3.113-3.523 5.108-5.04.681-.523 3.25-2.16 3.58-2.688.363-.59-.024-1.812-.626-2.562-1.09-1.335-2.557.16-4.011.591-1.46.432-2.648.614-3.034-.727-.335-1.176 1.426-3.364 2.199-4 3.392-2.773 5.556-2.938 7.948-3.75 1.801-.608 1.887-2.557 1.716-3.09-.523-1.637-1.71-1.785-3.87-1.285l-.005-.006Z" fill="#ED1B2F"></path>
+                  <path d="M57.036 8.482c-.535.097-1.08-.21-1.2-.88-.119-.67.29-1.142.825-1.239.534-.096 1.08.21 1.193.88.12.671-.29 1.143-.824 1.24h.006Zm-.33-1.869c-.398.068-.665.455-.58.938.086.488.466.755.864.687.386-.068.66-.449.574-.937-.085-.489-.472-.756-.864-.688h.006Zm.074 1.41-.233.039-.199-1.142.404-.074c.278-.051.46.006.505.267.04.21-.068.307-.21.341l.364.449-.273.051-.335-.438-.108.018.085.477v.011Zm.085-.711c.102-.017.16-.051.136-.176-.022-.12-.142-.102-.227-.091l-.165.028.046.273.204-.034h.006Z" fill="#000"></path>
+                  <path d="M56.002 2.608c-.154-.591-.67-1.58-1.427-1.727a1.153 1.153 0 0 0-.483 0c-.71.125-1.181.806-1.522 1.306-.108.16-.222.319-.296.398-.449.455-.875.733-1.238.795a.284.284 0 0 0-.068.012c-.21.023-.427-.012-.67-.057-.347-.057-.74-.12-1.205-.04-.103.017-.205.046-.307.074-1.727.529-4.006 2.17-5.148 6.932a4.474 4.474 0 0 0-.04-.301c-.159-1.08-.71-1.818-1.681-2.262-.432-.193-.995-.136-1.296-.08-.034.006-.074.012-.125.024-.256-.381-.738-.824-1.71-.762a3.88 3.88 0 0 0-.5.063c-2.693.477-5.568 3.517-6.687 6.068a8.912 8.912 0 0 0-.551 1.693 8.756 8.756 0 0 0-.086-1c-.164-1.136-.585-1.739-1.494-2.148-.37-.165-.79-.142-1.08-.09-.085.016-.17.033-.255.056-.386-.409-1.017-.733-1.903-.682a4.358 4.358 0 0 0-.523.063c-2.745.483-5.767 3.494-6.87 6a9.2 9.2 0 0 0-.528 1.562 4.19 4.19 0 0 0-.835-1.755c-.494-.608-1.125-.847-1.88-.716-.535.09-1.057.358-1.574.619-.381.193-.779.392-1.148.5a8.97 8.97 0 0 1-.977.244c-.955.17-1.216-.074-1.364-.59-.097-.342.136-.995.62-1.75.46-.716 1.05-1.381 1.403-1.665 2.607-2.131 4.482-2.676 6.295-3.2.477-.141.971-.283 1.471-.454 2.108-.716 2.33-2.971 2.069-3.79-.66-2.068-2.29-2.073-3.796-1.812-.227.04-.466.091-.733.154-2.465.573-7.846 3.374-10.391 5.71-3.17 2.92-4.739 6.01-4.404 8.71.415 3.358 2.847 3.681 4.37 3.636-1.08.892-2.864 2.528-4.637 5.59-3.05 5.273-1.102 8.455-.125 9.58 1.279 1.466 4.029 2.074 7.006 1.551 1.806-.318 3.505-1.034 4.79-2.011 1.494-1.136 3.073-2.807 4.227-4.466.204-.295.414-.62.619-.966-.318 1.602-.176 3.284.744 4.46 1.011 1.296 2.62 1.853 4.415 1.534 2.176-.386 4.142-1.96 5.13-4.108.722-1.573 1.415-4.403 1.54-6.3.04-.552.029-1.052.017-1.455-.006-.29-.011-.648.012-.767.187-.301.585-.54 1.005-.796.597-.357 1.273-.76 1.62-1.517.159-.346.232-.744.267-1.153a4.165 4.165 0 0 0 1.823.068c.296-.05.597-.136.892-.244-1.181 1.108-2.454 2.545-3.164 3.704a7.804 7.804 0 0 0-1.103 3.432c-.096 1.38.233 2.597.95 3.517 1.028 1.318 2.67 1.892 4.505 1.568 2.153-.38 4.085-1.926 5.057-4.034.733-1.596 1.221-3.926 1.244-5.943.006-.545-.034-1.074-.063-1.5-.028-.34-.056-.755-.034-.897.193-.296.813-.506 1.358-.688.818-.278 1.745-.59 2.108-1.38.165-.353.17-.847-.125-1.375.284.017.574 0 .87-.057a5.126 5.126 0 0 0 1.647-.625c2.727-1.569 4.364-5.182 4.085-9-.04-.517-.17-1.028-.284-1.477a.105.105 0 0 0-.011-.04c.153-.142.33-.29.517-.438.886-.727 2.102-1.721 1.647-3.5l.018-.005ZM43.78 14.46c.216.63.517 1.21.904 1.704-.148.006-.29.023-.444.051-.125.023-.25.052-.38.086a25.148 25.148 0 0 1-.08-1.841Zm-12.778 3.255c.091.444.227.875.415 1.285.045.096.09.193.142.284a4.4 4.4 0 0 1-.523.55c-.057-.613-.05-1.357-.034-2.119Zm-13.176 7.21c-.148-.01-.295 0-.443.023-.988.176-1.915 1.17-2.75 2.966-1.096 2.37-3.17 4.392-4.818 4.721h-.028c-.773.143-1.71-.34-1.818-.937-.245-1.267.636-2.926 1.46-3.966 1.556-1.954 3.147-3.528 5-4.943.187-.142.545-.386.954-.67 1.608-1.102 2.415-1.693 2.71-2.097-.045 1.102.148 2.16.591 3.08.574 1.187 1.494 2.022 2.528 2.295.74.193 1.569.188 2.37-.017-1.148 1.017-2.347 2.233-3.034 3.244.068-.38.096-.755.068-1.119-.114-1.489-1.506-2.483-2.79-2.58ZM38.6 13.846c-.21.807-1.319 2.438-2 2.557h-.052c-.221 0-.272-.068-.295-.102-.21-.307-.097-1.262.267-2.216.375-.977 1-1.648 1.46-2.034.352-.301.682-.5.915-.614.017.511-.051 1.466-.295 2.41Zm.79 13.09c-.268.921-.944 1.921-1.7 2.058h-.017c-.142.022-.176-.012-.198-.029-.114-.102-.21-.449-.165-.949.09-.971 1.534-2.738 2.471-3.608-.068.819-.233 1.983-.392 2.529ZM49.864 8.592c.08 1.198-.477 2.716-1.005 3.221-.188.182-.307.216-.347.222-.023 0-.045.005-.102-.046-.227-.221-.398-.903-.284-1.625.193-1.238.812-2.761 1.181-2.914a.656.656 0 0 1 .12-.035c.068-.01.085 0 .102.018.102.08.284.414.33 1.164l.005-.005Zm-24.01 9.09c-.273.728-1.398 2.125-1.864 2.21-.341-.034-.42-.159-.449-.204-.17-.279-.09-.915.21-1.705.58-1.51 1.926-2.414 2.625-2.732a8.903 8.903 0 0 1-.528 2.431h.006Zm.397 13.017c-.13.443-.625 1.892-1.568 2.057h-.017c-.148.028-.216-.017-.261-.063-.125-.13-.222-.449-.148-.869.153-.88 1.466-2.557 2.324-3.409-.046.733-.176 1.756-.33 2.284Z" fill="#fff" stroke="#fff" stroke-width="1.705" stroke-linecap="round" stroke-linejoin="round"></path>
+                  <path d="M53.218 6.375c.13.545.318 1.136.357 1.733.262 3.55-1.221 6.988-3.806 8.471-3.91 2.244-6.489-2.17-5.66-5.88.586-2.597 1.915-5.91 4.836-6.807.807-.25 1.375.113 2.074.04.659-.069 1.272-.586 1.647-.972.415-.42.955-1.704 1.796-1.54.437.086.869.83.994 1.318.489 1.91-1.403 2.682-2.244 3.631l.005.006Zm-5.648 3.903c-.227 1.454.489 3.068 1.67 1.932.66-.63 1.262-2.33 1.176-3.66-.062-1.01-.397-2.005-1.323-1.618-.79.323-1.387 2.46-1.523 3.346Zm-15.142 8.67c-.409.852-1.267 1.557-1.784 1.886-.488-1.619.046-5.056-.238-7.017-.148-1.017-.5-1.414-1.17-1.716-.399-.176-1.04-.01-1.313.131-.16-.312-.654-.852-1.67-.795-2.717.165-5.847 3.306-6.916 5.727-1.732 3.943.029 7.17 2.012 7.693 1.113.29 2.392.057 3.42-.591 1.256-.79 2.17-2.028 2.387-2.034.17 0 .193.773-.017 1.017-.262.301-1.086.852-1.444 1.12-1.392 1.033-3.892 3.255-4.84 4.806-1.108 1.813-1.716 4.824-.353 6.574 2.085 2.676 6.847 1.352 8.597-2.46.681-1.483 1.369-4.228 1.494-6.108.08-1.205-.074-2.148.097-2.443.55-.944 2.102-1.17 2.613-2.284.216-.46.239-1.097.267-1.733-.244-1.023-.67-1.705-1.136-1.767l-.006-.006Zm-5.642 11.903c-.29.977-.92 2.279-2.034 2.455-.807.13-1.21-.682-1.05-1.586.22-1.272 2.544-4.096 3.346-4.352.244-.08.011 2.54-.267 3.483h.005Zm-.409-12.971c-.307.807-1.665 2.636-2.437 2.562-1.478-.136-1.057-1.75-.71-2.665.869-2.26 3.335-3.386 3.596-3.204.261.182.057 1.966-.449 3.301v.006Z" fill="#ED1B2F"></path>
+                  <path d="M46.11 17.085c-.898-.591-1.983-.375-2.71-.006-.313-1.699-.069-5.045-.353-7.006-.147-1.017-.687-1.528-1.358-1.83-.397-.181-1.181-.039-1.46.103-.159-.312-.392-.937-1.409-.875-2.716.165-5.648 3.375-6.71 5.796-1.733 3.943.153 7.096 2.011 7.692 1.091.353 2.392.057 3.42-.59 1.256-.79 2.171-2.029 2.387-2.034.17 0 .324.795.108 1.04-.261.3-1.142.965-1.5 1.232-1.392 1.034-3.477 3.193-4.426 4.744-1.108 1.813-1.551 4.557-.188 6.313 2.086 2.676 6.864 1.46 8.614-2.358.682-1.483 1.17-3.733 1.193-5.716.017-1.204-.21-2.34-.045-2.636.568-1.023 2.954-.949 3.466-2.063.21-.46-.097-1.17-1.046-1.795l.006-.011Zm-6.182 10.01c-.284.978-1.051 2.273-2.165 2.455-.806.13-1.09-.67-1.005-1.585.136-1.477 2.721-4.33 3.528-4.585.244-.08-.08 2.773-.358 3.721v-.005Zm-.784-13.113c-.239.938-1.557 2.978-2.59 2.983-1.484.012-.904-2.17-.558-3.08.864-2.26 3.034-3.289 3.296-3.107.261.182.204 1.818-.154 3.204h.006ZM17.991 4.83c-2.37.55-7.642 3.284-10.136 5.579-2.858 2.63-4.551 5.62-4.227 8.227.562 4.511 5.073 2.727 5.221 3.13.148.404-2.699 1.506-5.562 6.444-2.568 4.437-1.477 7.448-.188 8.931 1.96 2.245 7.67 2.023 11.034-.534 2.841-2.159 6.13-6.392 5.92-9.062-.09-1.188-1.232-1.983-2.272-2.062-1.261-.097-2.273 1.869-2.642 2.664-1.074 2.313-3.227 4.642-5.222 5.034-1.028.205-2.323-.426-2.505-1.38-.307-1.603.818-3.472 1.568-4.415 1.494-1.88 3.113-3.523 5.102-5.04.688-.522 3.256-2.159 3.58-2.687.363-.591-.023-1.818-.631-2.563-1.085-1.335-2.557.16-4.006.591-1.46.438-2.653.614-3.034-.727-.335-1.17 1.426-3.364 2.205-4 3.386-2.773 5.556-2.943 7.943-3.75 1.8-.613 1.892-2.557 1.716-3.09-.523-1.643-1.705-1.79-3.87-1.285l.006-.005Z" fill="#ED1B2F"></path>
+                  <path d="M25.542 15.75s-1.778 1.193-1.563 1.92c.216.728-.659 2.216.358 1.551 1.017-.659 1.904-2.596 1.205-3.471Zm12.744-3.438s-1.778 1.193-1.563 1.92c.216.728-.659 2.216.358 1.552 1.017-.66 1.904-2.597 1.205-3.472Zm.744 13.079s-2.08 3.17-1.29 3.29c.785.12 1.887-1.864 1.29-3.29Zm-16.715.228-2.108-.392s.449 2.045.71 2.085c.261.04 1.403-1.693 1.403-1.693h-.005Zm11.357-1.665-2.124.971-.285 3.199 1.069-.193 1.34-3.977Zm46.617-3.894-2.248-2.946c-.105-.194 1.006-1.066 2.141-1.066.674 0 1.242.28 1.718 1.091l.66 1.14.674-1.14c.424-.74 1.111-1.079 1.744-1.079 1.11 0 2.155.86 2.048 1.054l-2.26 2.945 2.26 2.935c.105.194-.965 1.054-2.102 1.054-.635 0-1.28-.28-1.757-1.092l-.673-1.127-.66 1.127c-.476.825-1.124 1.092-1.745 1.092-1.11 0-2.154-.86-2.048-1.054l2.246-2.934h.002Z" fill="#fff"></path>
+                  <path d="m144.622 16.226-7.87-13.68c-1.419-2.466-4.967-2.466-6.386 0l-7.87 13.681h22.127-.001Zm7.505 13.045h-37.135l-2.634 4.578c-1.419 2.466.355 5.55 3.193 5.55h36.016c2.838 0 4.612-3.084 3.193-5.55l-2.634-4.578h.001Z" fill="#F41E25"></path>
+                  <path d="M120.062 19.177h-1.401v7.175h1.401v-7.175Zm35.2-2.481h-1.341v9.656h1.341v-9.656Zm2.443 0h-1.341v9.656h1.341v-9.656Zm-40.96 5.804c.287-.352.46-.8.46-1.29a2.03 2.03 0 0 0-1.973-2.032l-8.039-.001v7.175h8.421a2.09 2.09 0 0 0 2.086-2.095c0-.737-.381-1.385-.954-1.758h-.001Zm-1.995-2.243c.524 0 .95.426.95.953a.951.951 0 0 1-.95.954h-6.053v-1.907h6.053Zm.438 5.015h-6.491v-2.028h6.491c.558 0 1.01.454 1.01 1.013 0 .56-.452 1.014-1.01 1.014Zm37.816-6.096h-7.1a2.03 2.03 0 0 0-2.026 2.033c0 .6.259 1.139.67 1.51a2.09 2.09 0 0 0-.67 1.537 2.09 2.09 0 0 0 2.085 2.094h7.04v-1.08h-6.616a1.01 1.01 0 0 1-1.009-1.014c0-.56.452-1.013 1.009-1.013h6.041v-1.08h-6.097a.952.952 0 0 1-.95-.954.95.95 0 0 1 .95-.953h6.672v-1.08h.001Zm-23.306 2.988h-6.028a.952.952 0 0 1-.95-.954.95.95 0 0 1 .95-.953h5.385a.95.95 0 0 1 .95.953v.298h1.505v-.298a2.03 2.03 0 0 0-1.972-2.032v-.001h-6.296a2.03 2.03 0 0 0-2.026 2.033 2.03 2.03 0 0 0 2.026 2.034h6.031c.559 0 1.01.454 1.01 1.014s-.452 1.014-1.01 1.014h-5.608c-.559 0-1.01-.454-1.01-1.014v-.297h-1.5v.297a2.09 2.09 0 0 0 2.085 2.094h6.458a2.09 2.09 0 0 0 2.086-2.094 2.09 2.09 0 0 0-2.086-2.093v-.001Zm11.362 0h-6.028a.952.952 0 0 1-.95-.954.95.95 0 0 1 .95-.953h5.385c.524 0 .95.426.95.953v.298h1.504v-.298a2.029 2.029 0 0 0-1.972-2.032v-.001h-6.295a2.03 2.03 0 0 0-2.026 2.033 2.03 2.03 0 0 0 2.026 2.034h6.031c.558 0 1.01.454 1.01 1.014s-.452 1.014-1.01 1.014h-5.608c-.559 0-1.01-.454-1.01-1.014v-.297h-1.501v.297a2.09 2.09 0 0 0 2.086 2.094h6.458a2.09 2.09 0 0 0 2.086-2.094 2.09 2.09 0 0 0-2.086-2.093v-.001Zm-20.998-5.468h-1.401v1.645h1.401v-1.645Zm39.426.628c.133 0 .213.018.213.135-.004.083-.057.116-.163.118h-.289l.002-.252h.238l-.001-.001Zm-.238.438h.164l.225.41.266-.002-.244-.432c.172-.015.273-.089.273-.284 0-.232-.131-.31-.344-.317l-.578.001v1.034l.237-.002.001-.408Zm.197-.835c.43 0 .723.284.725.71 0 .432-.295.736-.721.736-.429.002-.711-.293-.712-.72-.002-.429.279-.724.708-.725m.005-.232c-.675.002-.956.513-.956.956.004.453.288.953.958.953a.93.93 0 0 0 .955-.955c-.003-.496-.331-.955-.957-.954Z" fill="#fff"></path>
+                </svg>
+                <span class="blind">Eggo X Bissell</span>
+            </h1>
+          
+           
+            </div>
+            
+           
+        </header>
+
+        <main id="container">
+        
+            <section class="sc-intro default">
+                
+                <div class="intro">
+
+
+                    <div class="sticky-wrapper"> 
+                        <div class="sticky">
+                            <h2 class="headline">
+                                <span class="wrap"><span class="char">GOODBYE</span></span>
+                                <span class="wrap"><span class="char">MORNING</span></span>
+                                <span class="wrap"><span class="char">MESS</span></span>
+                            </h2>
+                            <div class="thumb">
+                                
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div class="content" >
+                        <strong class="title " >Meet the EggoVac</strong>
+                        <p class="desc">
+                            For the love of waffles and clean homes. The cleaning champions at BISSELL have joined forces with the breakfast masters at Eggo. Explore high performance cleaning solutions for even the stickiest
+                            situations and get
+                            <span class="highlight">free Eggo waffles<sup>*</sup></span>as a sweet treat.
+                        </p>
+                       
+                        <div class="content2">
+                            <a href="" class="link-more">Out Of Stock</a>
+                            <span class="intro-lable">Limited Edition</span>
+                            <span class="intro-footnote">
+                                <sup>*</sup>includes $50 gift card for Eggo® waffles with purchase, while supplies last.
+                            </span>
+                        </div>
+                    </div>
+                    <div class="curve-area">
+                        <svg width="100%" viewBox="0 0 1440 240" fill="none" xmlns="http://www.w3.org/2000/svg" class="page-section__svg">
+                        <path data-end-path="M 1440 240 L 0 240 L 0 120 C 0 120 420 238 720 238 C 1020 238 1440 120 1440 120 L 1440 240 L 1440 240 Z" fill-rule="evenodd" clip-rule="evenodd" d="M1440 240 C960 240 480 240 0 240 0 200 0 160 0 120 0 120 420 207.21 720 207.21 1020 207.21 1440 120 1440 120 1440 160 1440 200 1440 240 1440 240 1440 240 1440 240 " fill="currentColor" data-original="M 1440 240 L 0 240 L 0 120 C 0 120 420 0 720 0 C 1020 0 1440 120 1440 120 L 1440 240 L 1440 240 Z"></path>
+                        </svg>
+                    </div>
+                </div>
+             
+               
+            </section>
+           
+            <section class="sc-product reverse">
+
+                    <div class="content">
+                        <h2 class="headline">
+                            <span class="hidden">MASTER THE</span>
+                       
+                            <span class="word hidden">
+                                <span class="mess">MESS</span>
+                                <span class="char">S</span>
+                                <span class="char">S</span>
+                                <span class="char">S</span>
+                            </span>
+                        </h2>
+                        <p class="desc">
+                            In the everyday hustle and bustle, spills, stains, and sticky messes are inevitable. No matter the mess, BISSELL and Eggo are here to make your life and mornings a lot easier!
+                        </p>
+                   
+                    <div class="content-area">
+                        <ul class="prd-list">
+                            <li class="prd-item">
+                                <div class="content">
+                                    <p class="desc">
+                                    An effortless way to powerfully vacuum waffle crumbs and more breakfast messes.</p>
+                                </div>
+                                <div class="content">
+                                    <div class="thumb"><img src="https://www.bissell.com/on/demandware.static/-/Library-Sites-shared-library-bissell/default/dw6be6283d/eggo/images/eggo.webp" alt="" width="255">
+                                        <iframe class="card-video" src="https://player.vimeo.com/video/875967916?background=1" width="640" height="360" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" trakkvideo="true" data-ready="true"></iframe>
+                                    </div>
+                                </div>
+                                <div class="text-area">
+                                    <div class="content"><strong class="title">EggoVac Robotic<br>Vacuum and Mop</strong></div>
+                                    <div class="content"><a href="" class="sold-out">Out Of Stock</a></div>
+                                    <div class="content"><a class="discover-more">Discover more</a></div>
+                                </div>
+                            </li>
+                            <li class="prd-item middle">
+                                <p class="desc">
+                               Vacuum, wash, and steam sticky, stuck-on messes like syrup from all sealed hard floors.</p>
+                                <div class="thumb"><img src="https://www.bissell.com/on/demandware.static/-/Library-Sites-shared-library-bissell/default/dw42c23e5a/eggo/images/crosswave.webp" alt>
+                                    <iframe class="card-video" src="https://player.vimeo.com/video/871092384?background=1" width="640" height="360" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" trakkvideo="true" data-ready="true">
+                                    </iframe>
+                                </div>
+                                <div class="text-area">
+                                    <strong class="title">CrossWave® HydroSteam®<br>Wet/Dry Vac</strong>
+                                    <a href="" class="link-more">Buy now $319.99</a>
+                                    <a class="discover-more">Discover more</a>
+                                </div>
+                            </li>
+                            <li class="prd-item ">
+                                <p class="desc">
+                               Set-in, sticky stains on soft surfaces vanish with the power of HydroSteam® Technology.</p>
+                                <div class="thumb"><img src="https://www.bissell.com/on/demandware.static/-/Library-Sites-shared-library-bissell/default/dwa7331fdc/eggo/images/hydrosteam.webp" alt>
+                                    <iframe class="card-video" src="https://player.vimeo.com/video/871092364?background=1" width="640" height="360" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" trakkvideo="true" data-ready="true">
+                                    </iframe>
+                                </div>
+                                <div class="text-area">
+                                    <strong class="title">Little Green® HydroSteam®<br>Portable Carpet Cleaner</strong>
+                                    <a href="" class="sold-out">Out Of Stock</a>
+                                    <a class="discover-more">Discover more</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                  
+           
+            <div class="curve-area">
+                <svg width="100%" viewBox="0 0 1440 240" fill="none" xmlns="http://www.w3.org/2000/svg" class="page-section__svg">
+                <path data-end-path="M 1440 240 L 0 240 L 0 120 C 0 120 420 238 720 238 C 1020 238 1440 120 1440 120 L 1440 240 L 1440 240 Z" fill-rule="evenodd" clip-rule="evenodd" d="M1440 240 C960 240 480 240 0 240 0 200 0 160 0 120 0 120 420 208.28 720 208.28 1020 208.28 1440 120 1440 120 1440 160 1440 200 1440 240 1440 240 1440 240 1440 240 " fill="currentColor" data-original="M 1440 240 L 0 240 L 0 120 C 0 120 420 0 720 0 C 1020 0 1440 120 1440 120 L 1440 240 L 1440 240 Z"></path>
+                </svg>
+            </div>
+            </section>
+      
+            <section class="sc-eggovac default">
+
+                <div class="inner1">
+                    <h2 class="headline" > 
+                        <span>BYE BYE,</span>
+                        <span>kITCHEN</span>
+                        <span class="word">
+                            <span class="char">C</span>
+                            <span class="char">H</span>
+                            <span class="char">A</span>
+                            <span class="char">O</span>
+                            <span class="char">S</span>
+                        </span>
+                    </h2>
+                    <div class="content">
+                        <p class="desc">No mess, no stress. The EggoVac tackles crumbs and other breakfast mishaps effortlessly, so you can sit back and enjoy the mornings with your family.
+                        </p>
+                        <span class="name">EggoVac Robotic Vacuum and Mop</span>
+                        <a href="" class="link-more">Out Of Stock</a>
+                        <a class="details-more">Product details</a>
+                       
+                    </div>
+                </div>
+            
+
+                <div class="sticky-wrapper">
+
+                    <div class="video-area">
+                        <video loop="loop" playsinline="playsinline" autoplay="autoplay" muted="muted"><source type="video/mp4" src="https://player.vimeo.com/progressive_redirect/playback/875967916/rendition/720p/file.mp4?loc=external&amp;signature=fccb750efdad10710592a5d08f18e1cca065ea5d28043b45cae1fcd7d3bbb255"></video>
+                        <p class="desc">The BISSELL EggoVac is the sweetest solution for busy families seeking crumb-free homes.</p>
+                        <div class="card-content">
+                            <div class="thumb">
+                                <img src="https://www.bissell.com/on/demandware.static/-/Library-Sites-shared-library-bissell/default/dw6be6283d/eggo/images/eggo.webp" alt>
+                            </div>
+                            <div class="desc-area">
+                                <strong class="title">
+                                    EggoVac Robotic<br>Vacuum and Mop
+                                </strong>
+                                <div class="price">
+                                    <span class="discount">$150.00</span>
+                                    <span class="reguler">$549.99</span>
+                                </div>
+                                <a href="" class="link-more">Out Of Stock</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="curve-area">
+                    <svg width="100%" viewBox="0 0 1440 240" fill="none" xmlns="http://www.w3.org/2000/svg" class="page-section__svg">
+                    <path data-end-path="M 1440 240 L 0 240 L 0 120 C 0 120 420 238 720 238 C 1020 238 1440 120 1440 120 L 1440 240 L 1440 240 Z" fill-rule="evenodd" clip-rule="evenodd" d="M1440 240 C960 240 480 240 0 240 0 200 0 160 0 120 0 120 420 207.21 720 207.21 1020 207.21 1440 120 1440 120 1440 160 1440 200 1440 240 1440 240 1440 240 1440 240 " fill="currentColor" data-original="M 1440 240 L 0 240 L 0 120 C 0 120 420 0 720 0 C 1020 0 1440 120 1440 120 L 1440 240 L 1440 240 Z"></path>
+                    </svg>
+                </div>
+                   
+            </section>
+
+            <section class="sc-hydrosteam reverse">
+            
+                <div class="inner1">
+                    <h2 class="headline">
+                       <span>CLEAN UP </span>
+                       <span class="crumbs">
+                        <span class="char">C</span>
+                        <span class="char">R</span>
+                        <span class="char">U</span>
+                        <span class="char">M</span>
+                        <span class="char">B</span>
+                        <span class="char">S</span>,
+                        <svg width="1035" height="210" viewBox="0 0 1035 210" fill="none" xmlns="http://www.w3.org/2000/svg" >
+                            <g>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M86.112 184.7C90.9214 194.114 101.377 198.395 109.464 194.263C114.696 191.59 117.655 186.052 117.791 179.926C120.961 184.048 126.623 185.496 131.31 183.102C136.614 180.392 138.661 173.789 135.884 168.353C133.107 162.917 126.556 160.707 121.253 163.416C118.378 164.885 116.46 167.498 115.748 170.449C115.637 170.21 115.521 169.973 115.4 169.737C110.59 160.323 100.135 156.042 92.0477 160.174C83.9601 164.306 81.3026 175.287 86.112 184.7Z" fill="#FFF9EB"></path>
+                            </g>
+                            <g>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M296.784 132.95C307.341 133.492 316.276 126.578 316.741 117.508C317.042 111.641 313.726 106.309 308.489 103.128C313.643 102.444 317.729 98.2651 317.998 93.0081C318.304 87.0605 313.609 81.9855 307.513 81.6727C301.416 81.3599 296.227 85.9278 295.922 91.8755C295.756 95.0995 297.06 98.0671 299.26 100.159C298.998 100.136 298.734 100.118 298.469 100.104C287.912 99.5627 278.976 106.476 278.511 115.546C278.046 124.617 286.227 132.408 296.784 132.95Z" fill="#FFF9EB"></path>
+                            </g>
+                            <g>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M657.524 169.857C668.028 168.671 675.717 160.393 674.697 151.369C674.038 145.531 669.897 140.811 664.211 138.526C669.185 137.011 672.535 132.222 671.944 126.992C671.276 121.074 665.816 116.832 659.751 117.517C653.685 118.202 649.31 123.555 649.978 129.473C650.34 132.681 652.11 135.396 654.622 137.101C654.359 137.121 654.096 137.146 653.832 137.176C643.328 138.363 635.639 146.641 636.659 155.665C637.678 164.69 647.02 171.044 657.524 169.857Z" fill="#FFF9EB"></path>
+                            </g>
+                            <g>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M914.859 25.5543C913.664 36.0575 920.011 45.4041 929.035 46.4304C934.872 47.0943 940.399 44.1144 943.899 39.0842C944.262 44.2715 948.18 48.608 953.41 49.2029C959.327 49.8759 964.683 45.5046 965.373 39.4394C966.063 33.3742 961.825 27.9118 955.908 27.2387C952.7 26.8739 949.658 27.9913 947.434 30.0573C947.473 29.7971 947.507 29.535 947.537 29.2711C948.732 18.7679 942.385 9.42135 933.361 8.395C924.337 7.36864 916.053 15.0511 914.859 25.5543Z" fill="#FFF9EB"></path>
+                            </g>
+                            <g>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M762.965 191.053C770.16 198.798 781.386 200.065 788.04 193.884C792.344 189.886 793.68 183.75 792.141 177.819C796.314 180.921 802.157 180.77 806.013 177.187C810.376 173.134 810.545 166.222 806.391 161.75C802.236 157.278 795.331 156.938 790.968 160.992C788.603 163.189 787.47 166.226 787.59 169.259C787.418 169.06 787.241 168.863 787.061 168.669C779.866 160.924 768.639 159.657 761.986 165.838C755.332 172.019 755.77 183.309 762.965 191.053Z" fill="#FFF9EB"></path>
+                            </g>
+                            <g>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M413.524 78.8575C424.028 77.671 431.717 69.3933 430.697 60.3686C430.038 54.5311 425.897 49.8109 420.211 47.5262C425.185 46.0113 428.535 41.2222 427.944 35.9916C427.276 30.0737 421.816 25.8318 415.751 26.517C409.685 27.2021 405.31 32.5549 405.978 38.4727C406.34 41.6805 408.11 44.3959 410.622 46.1011C410.359 46.1214 410.096 46.1465 409.832 46.1763C399.328 47.3628 391.639 55.6405 392.659 64.6652C393.678 73.6899 403.02 80.044 413.524 78.8575Z" fill="#FFF9EB"></path>
+                            </g>
+                            </svg>
+
+                       </span>
+                       <span>MILK, AND</span>
+                       <span>SYRUP</span>
+                    </h2>
+                    <div class="content">
+                        <p class="desc">CrossWave® HydroSteam® is a triple threat: Vacuum, wash, and steam all sealed hard<br>floors with a wet/dry vac proven to obliterate sticky, stuck-on messes.
+                        </p>
+                        <span class="name">CrossWave® HydroSteam®</span>
+                        <a href="" class="link-more">Out Of Stock</a>
+                        <a class="details-more">Product details</a>
+                       
+                    </div>
+                </div>
+                <div class="sticky-wrapper">
+                    <div class="video-area">
+                        <video loop="loop" playsinline="playsinline" autoplay="autoplay" muted="muted"><source type="video/mp4" src="https://player.vimeo.com/progressive_redirect/playback/871092437/rendition/720p/file.mp4?loc=external&amp;signature=767763733b88a07e86fb1721bafb4b703906395a93c8ac6f6581c3d0d7552937"></video>
+                        <p class="desc">A triple threat for morning messiness: it vacuums,<br>washes,and cleans all sealed hard floors.</p>
+                        <div class="card-content">
+                            <div class="thumb">
+                                <img src="https://www.bissell.com/on/demandware.static/-/Library-Sites-shared-library-bissell/default/dw42c23e5a/eggo/images/crosswave.webp" alt="">
+                            </div>
+                            <div class="desc-area">
+                                <strong class="title">
+                                    CrossWave®<br>HydroSteam®
+                                </strong>
+                                <div class="price">
+                                    <span class="reguler">$549.99</span>
+                    
+                                </div>
+                                <a href="" class="link-more">BUY NOW</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="curve-area">
+                    <svg width="100%" viewBox="0 0 1440 240" fill="none" xmlns="http://www.w3.org/2000/svg" class="page-section__svg">
+                    <path data-end-path="M 1440 240 L 0 240 L 0 120 C 0 120 420 238 720 238 C 1020 238 1440 120 1440 120 L 1440 240 L 1440 240 Z" fill-rule="evenodd" clip-rule="evenodd" d="M1440 240 C960 240 480 240 0 240 0 200 0 160 0 120 0 120 420 208.28 720 208.28 1020 208.28 1440 120 1440 120 1440 160 1440 200 1440 240 1440 240 1440 240 1440 240 " fill="currentColor" data-original="M 1440 240 L 0 240 L 0 120 C 0 120 420 0 720 0 C 1020 0 1440 120 1440 120 L 1440 240 L 1440 240 Z"></path>
+                    </svg>
+                </div>
+              
+            
+            </section>
+
+            <section class="sc-carpet default">
+
+                <div class="inner1">
+                    <h2 class="headline">
+                        <span>
+                            <span class="word">
+                                <span class="char">S</span>
+                                <span class="char">T</span>
+                                <span class="char">E</span>
+                                <span class="char">A</span>
+                                <span class="char">M</span>
+                            </span>
+                            STICKY<br>SITUATIONS</span>
+                    </h2>
+                    <div class="content">
+                        <p class="desc"> The portable Little Green® HydroSteam® machine effectively tackles stains and<br>stickiness on upholstery, carpets, rugs, and more, in a matter of minutes.
+                        </p>
+                        <span class="name">CrossWave® HydroSteam®</span>
+                        <a href="" class="link-more">Out Of Stock</a>
+                        <a class="details-more">Product details</a>
+                       
+                    </div>
+                </div>
+                <div class="sticky-wrapper">
+                    <div class="video-area">
+                        <video loop="loop" playsinline="playsinline" autoplay="autoplay" muted="muted"><source type="video/mp4" src="https://player.vimeo.com/progressive_redirect/playback/871092402/rendition/720p/file.mp4?loc=external&amp;signature=ec87d7bd5c8383969fd0f58ac4c00243b5d8c5f44a916366f851ab0b7711b6c9"></video>
+                        <p class="desc">With three different cleaning modes, no stain will<br>remain.</p>
+                        <div class="card-content">
+                            <div class="thumb">
+                                <img src="https://www.bissell.com/on/demandware.static/-/Library-Sites-shared-library-bissell/default/dwa7331fdc/eggo/images/hydrosteam.webp" alt>
+                            </div>
+                            <div class="desc-area">
+                                <strong class="title">
+                                    EggoVac Robotic<br>Vacuum and Mop
+                                </strong>
+                                <div class="price">
+                                    <span class="discount">$150.00</span>
+                                    <span class="reguler">$549.99</span>
+                                </div>
+                                <a href="" class="link-more">Out Of Stock</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="curve-area">
+                    <svg width="100%" viewBox="0 0 1440 240" fill="none" xmlns="http://www.w3.org/2000/svg" class="page-section__svg">
+                    <path data-end-path="M 1440 240 L 0 240 L 0 120 C 0 120 420 238 720 238 C 1020 238 1440 120 1440 120 L 1440 240 L 1440 240 Z" fill-rule="evenodd" clip-rule="evenodd" d="M1440 240 C960 240 480 240 0 240 0 200 0 160 0 120 0 120 420 207.21 720 207.21 1020 207.21 1440 120 1440 120 1440 160 1440 200 1440 240 1440 240 1440 240 1440 240 " fill="currentColor" data-original="M 1440 240 L 0 240 L 0 120 C 0 120 420 0 720 0 C 1020 0 1440 120 1440 120 L 1440 240 L 1440 240 Z"></path>
+                    </svg>
+                </div>
+                
+            </section>
+
+            <section class="sc-compare reverse">
+               
+                <div class="group-title">
+                    <h2 class="title">The perfect solution<br>for your mess</h2>
+                    <span class="desc">From a crumb-loving robot to a steamy dream team.</span>
+                </div>
+
+               
+                    <ul class="compare-list">
+                        <li class="compare-item">
+                            <div class="thumb">
+                                <img src="https://www.bissell.com/on/demandware.static/-/Library-Sites-shared-library-bissell/default/dw6be6283d/eggo/images/eggo.webp" alt="eggo">
+                            </div>
+                            <strong class="name">EggoVac<br>Robotic Vacuum </strong>
+                            <ul class="sub-list">
+                                <li class="sub-item">
+                                    <svg width="27" height="20" viewBox="0 0 27 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M9.80556 15.8612L24.5973 1.0695C24.8763 0.791721 25.2076 0.652832 25.5912 0.652832C25.9749 0.652832 26.3056 0.792208 26.5833 1.07096C26.8611 1.34971 27 1.68072 27 2.064C27 2.44728 26.8611 2.7778 26.5833 3.05558L10.7778 18.8612C10.5 19.1389 10.1759 19.2778 9.80556 19.2778C9.4352 19.2778 9.11113 19.1389 8.83335 18.8612L1.38889 11.4167C1.11111 11.1377 0.979169 10.8063 0.993057 10.4227C1.00695 10.0391 1.15327 9.70836 1.43202 9.43058C1.71077 9.15281 2.04178 9.01392 2.42506 9.01392C2.80836 9.01392 3.13891 9.15281 3.41668 9.43058L9.80556 15.8612Z" fill="#00205B"></path>
+                                    </svg>
+                                    <span class="title">Crumbs</span>
+                                </li>
+                                <li class="sub-item">
+                                    <div class="icon-uncheck"></div>
+                                    <span class="title">Sticky messes</span>
+                                </li>
+                                <li class="sub-item">
+                                    <div class="icon-uncheck"></div>
+                                    <span class="title">Set-in stains</span>
+                                </li>
+                                <li class="sub-item">
+                                    <svg width="27" height="20" viewBox="0 0 27 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M9.80556 15.8612L24.5973 1.0695C24.8763 0.791721 25.2076 0.652832 25.5912 0.652832C25.9749 0.652832 26.3056 0.792208 26.5833 1.07096C26.8611 1.34971 27 1.68072 27 2.064C27 2.44728 26.8611 2.7778 26.5833 3.05558L10.7778 18.8612C10.5 19.1389 10.1759 19.2778 9.80556 19.2778C9.4352 19.2778 9.11113 19.1389 8.83335 18.8612L1.38889 11.4167C1.11111 11.1377 0.979169 10.8063 0.993057 10.4227C1.00695 10.0391 1.15327 9.70836 1.43202 9.43058C1.71077 9.15281 2.04178 9.01392 2.42506 9.01392C2.80836 9.01392 3.13891 9.15281 3.41668 9.43058L9.80556 15.8612Z" fill="#00205B"></path>
+                                    </svg>
+                                    <span class="title">Hard surfaces</span>
+                                </li>
+                                <li class="sub-item">
+                                    <svg width="27" height="20" viewBox="0 0 27 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M9.80556 15.8612L24.5973 1.0695C24.8763 0.791721 25.2076 0.652832 25.5912 0.652832C25.9749 0.652832 26.3056 0.792208 26.5833 1.07096C26.8611 1.34971 27 1.68072 27 2.064C27 2.44728 26.8611 2.7778 26.5833 3.05558L10.7778 18.8612C10.5 19.1389 10.1759 19.2778 9.80556 19.2778C9.4352 19.2778 9.11113 19.1389 8.83335 18.8612L1.38889 11.4167C1.11111 11.1377 0.979169 10.8063 0.993057 10.4227C1.00695 10.0391 1.15327 9.70836 1.43202 9.43058C1.71077 9.15281 2.04178 9.01392 2.42506 9.01392C2.80836 9.01392 3.13891 9.15281 3.41668 9.43058L9.80556 15.8612Z" fill="#00205B"></path>
+                                    </svg>
+                                    <span class="title">Soft surfaces</span>
+                                </li>
+                    
+                            </ul>
+                            <a class="link-now">Buy now $319.99</a>
+                            <a class="details-more">Product details</a>
+                    
+                        </li>
+                        <li class="compare-item">
+                            <div class="thumb">
+                                <img src="https://www.bissell.com/on/demandware.static/-/Library-Sites-shared-library-bissell/default/dw42c23e5a/eggo/images/crosswave.webp" alt="crosswave">
+                            </div>
+                            <strong class="name">CrossWave®<br>HydroSteam®</strong>
+                            <ul class="sub-list">
+                                <li class="sub-item">
+                                    <svg width="27" height="20" viewBox="0 0 27 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M9.80556 15.8612L24.5973 1.0695C24.8763 0.791721 25.2076 0.652832 25.5912 0.652832C25.9749 0.652832 26.3056 0.792208 26.5833 1.07096C26.8611 1.34971 27 1.68072 27 2.064C27 2.44728 26.8611 2.7778 26.5833 3.05558L10.7778 18.8612C10.5 19.1389 10.1759 19.2778 9.80556 19.2778C9.4352 19.2778 9.11113 19.1389 8.83335 18.8612L1.38889 11.4167C1.11111 11.1377 0.979169 10.8063 0.993057 10.4227C1.00695 10.0391 1.15327 9.70836 1.43202 9.43058C1.71077 9.15281 2.04178 9.01392 2.42506 9.01392C2.80836 9.01392 3.13891 9.15281 3.41668 9.43058L9.80556 15.8612Z" fill="#00205B"></path>
+                                    </svg>
+                                    <span class="title">Crumbs</span>
+                                </li>
+                                <li class="sub-item">
+                                    <div class="icon-uncheck"></div>
+                                    <span class="title">Sticky messes</span>
+                                </li>
+                                <li class="sub-item">
+                                    <div class="icon-uncheck"></div>
+                                    <span class="title">Set-in stains</span>
+                                </li>
+                                <li class="sub-item">
+                                    <svg width="27" height="20" viewBox="0 0 27 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M9.80556 15.8612L24.5973 1.0695C24.8763 0.791721 25.2076 0.652832 25.5912 0.652832C25.9749 0.652832 26.3056 0.792208 26.5833 1.07096C26.8611 1.34971 27 1.68072 27 2.064C27 2.44728 26.8611 2.7778 26.5833 3.05558L10.7778 18.8612C10.5 19.1389 10.1759 19.2778 9.80556 19.2778C9.4352 19.2778 9.11113 19.1389 8.83335 18.8612L1.38889 11.4167C1.11111 11.1377 0.979169 10.8063 0.993057 10.4227C1.00695 10.0391 1.15327 9.70836 1.43202 9.43058C1.71077 9.15281 2.04178 9.01392 2.42506 9.01392C2.80836 9.01392 3.13891 9.15281 3.41668 9.43058L9.80556 15.8612Z" fill="#00205B"></path>
+                                    </svg>
+                                    <span class="title">Hard surfaces</span>
+                                </li>
+                                <li class="sub-item">
+                                    <svg width="27" height="20" viewBox="0 0 27 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M9.80556 15.8612L24.5973 1.0695C24.8763 0.791721 25.2076 0.652832 25.5912 0.652832C25.9749 0.652832 26.3056 0.792208 26.5833 1.07096C26.8611 1.34971 27 1.68072 27 2.064C27 2.44728 26.8611 2.7778 26.5833 3.05558L10.7778 18.8612C10.5 19.1389 10.1759 19.2778 9.80556 19.2778C9.4352 19.2778 9.11113 19.1389 8.83335 18.8612L1.38889 11.4167C1.11111 11.1377 0.979169 10.8063 0.993057 10.4227C1.00695 10.0391 1.15327 9.70836 1.43202 9.43058C1.71077 9.15281 2.04178 9.01392 2.42506 9.01392C2.80836 9.01392 3.13891 9.15281 3.41668 9.43058L9.80556 15.8612Z" fill="#00205B"></path>
+                                    </svg>
+                                    <span class="title">Soft surfaces</span>
+                                </li>
+                    
+                            </ul>
+                            <a class="link-now">Buy now $319.99</a>
+                            <a class="details-more">Product details</a>
+                        </li>
+                        <li class="compare-item">
+                            <div class="thumb">
+                                <img src="https://www.bissell.com/on/demandware.static/-/Library-Sites-shared-library-bissell/default/dwa7331fdc/eggo/images/hydrosteam.webp" alt="hydrosteam">
+                            </div>
+                            <strong class="name">Little Green®<br>HydroSteam®</strong>
+                            <ul class="sub-list">
+                                <li class="sub-item">
+                                    <svg width="27" height="20" viewBox="0 0 27 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M9.80556 15.8612L24.5973 1.0695C24.8763 0.791721 25.2076 0.652832 25.5912 0.652832C25.9749 0.652832 26.3056 0.792208 26.5833 1.07096C26.8611 1.34971 27 1.68072 27 2.064C27 2.44728 26.8611 2.7778 26.5833 3.05558L10.7778 18.8612C10.5 19.1389 10.1759 19.2778 9.80556 19.2778C9.4352 19.2778 9.11113 19.1389 8.83335 18.8612L1.38889 11.4167C1.11111 11.1377 0.979169 10.8063 0.993057 10.4227C1.00695 10.0391 1.15327 9.70836 1.43202 9.43058C1.71077 9.15281 2.04178 9.01392 2.42506 9.01392C2.80836 9.01392 3.13891 9.15281 3.41668 9.43058L9.80556 15.8612Z" fill="#00205B"></path>
+                                    </svg>
+                                    <span class="title">Crumbs</span>
+                                </li>
+                                <li class="sub-item">
+                                    <div class="icon-uncheck"></div>
+                                    <span class="title">Sticky messes</span>
+                                </li>
+                                <li class="sub-item">
+                                    <div class="icon-uncheck"></div>
+                                    <span class="title">Set-in stains</span>
+                                </li>
+                                <li class="sub-item">
+                                    <svg width="27" height="20" viewBox="0 0 27 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M9.80556 15.8612L24.5973 1.0695C24.8763 0.791721 25.2076 0.652832 25.5912 0.652832C25.9749 0.652832 26.3056 0.792208 26.5833 1.07096C26.8611 1.34971 27 1.68072 27 2.064C27 2.44728 26.8611 2.7778 26.5833 3.05558L10.7778 18.8612C10.5 19.1389 10.1759 19.2778 9.80556 19.2778C9.4352 19.2778 9.11113 19.1389 8.83335 18.8612L1.38889 11.4167C1.11111 11.1377 0.979169 10.8063 0.993057 10.4227C1.00695 10.0391 1.15327 9.70836 1.43202 9.43058C1.71077 9.15281 2.04178 9.01392 2.42506 9.01392C2.80836 9.01392 3.13891 9.15281 3.41668 9.43058L9.80556 15.8612Z" fill="#00205B"></path>
+                                    </svg>
+                                    <span class="title">Hard surfaces</span>
+                                </li>
+                                <li class="sub-item">
+                                    <svg width="27" height="20" viewBox="0 0 27 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M9.80556 15.8612L24.5973 1.0695C24.8763 0.791721 25.2076 0.652832 25.5912 0.652832C25.9749 0.652832 26.3056 0.792208 26.5833 1.07096C26.8611 1.34971 27 1.68072 27 2.064C27 2.44728 26.8611 2.7778 26.5833 3.05558L10.7778 18.8612C10.5 19.1389 10.1759 19.2778 9.80556 19.2778C9.4352 19.2778 9.11113 19.1389 8.83335 18.8612L1.38889 11.4167C1.11111 11.1377 0.979169 10.8063 0.993057 10.4227C1.00695 10.0391 1.15327 9.70836 1.43202 9.43058C1.71077 9.15281 2.04178 9.01392 2.42506 9.01392C2.80836 9.01392 3.13891 9.15281 3.41668 9.43058L9.80556 15.8612Z" fill="#00205B"></path>
+                                    </svg>
+                                    <span class="title">Soft surfaces</span>
+                                </li>
+                    
+                            </ul>
+                            <a class="link-more">out of stock</a>
+                            <a class="details-more">Product details</a>
+                        </li>
+                    </ul>
+               
+                <div class="curve-area">
+                    <svg width="100%" viewBox="0 0 1440 240" fill="none" xmlns="http://www.w3.org/2000/svg" class="page-section__svg">
+                    <path data-end-path="M 1440 240 L 0 240 L 0 120 C 0 120 420 238 720 238 C 1020 238 1440 120 1440 120 L 1440 240 L 1440 240 Z" fill-rule="evenodd" clip-rule="evenodd" d="M1440 240 C960 240 480 240 0 240 0 200 0 160 0 120 0 120 420 207.21 720 207.21 1020 207.21 1440 120 1440 120 1440 160 1440 200 1440 240 1440 240 1440 240 1440 240 " fill="currentColor" data-original="M 1440 240 L 0 240 L 0 120 C 0 120 420 0 720 0 C 1020 0 1440 120 1440 120 L 1440 240 L 1440 240 Z"></path>
+                    </svg>
+                </div>
+            
+            
+
+            </section>
+
+            <section class="sc-founded default">
+               
+                <div class="thumb">
+                    <img src="https://www.bissell.com/on/demandware.static/-/Library-Sites-shared-library-bissell/default/dw396e902c/eggo/images/footer.png" alt="">
+                </div>
+                <div class="desc-area" >
+                   
+                        <h2 class="title " >Every Purchase<br>Saves Pets<span class="tm">™</span></h2>
+               
+                
+                        <p class="desc " >Founded by Cathy Bissell in 2011, BISSELL Pet Foundation® is a<br>
+                            national welfare organization dedicated to ending pet homelessness.
+                        </p>
+                
+                    <a href="" class="learn-more">learn-more</a>
+                </div>
+                <ul class="benefit-list">
+                    <li class="benefit-item Pets">
+                       <div class="thumb">
+                        <img src="https://www.bissell.com/on/demandware.static/Sites-bissell-Site/-/default/dwa0c1a550/svg-icons/icon-pawprint.svg" alt>
+                       </div>
+                        <span >Every Purchase Saves Pets™</span>
+                    </li>
+                    <li class="benefit-item Shipping">
+                        <div class="thumb">
+                            <img src="https://www.bissell.com/on/demandware.static/Sites-bissell-Site/-/default/dw2fc799c3/svg-icons/icon-freeship-white.svg" alt>
+                        </div>
+                        <span>Free Shipping Over $75</span>
+                    </li>
+                    <li class="benefit-item Guarantee">
+                        <div class="thumb">
+                            <img src="https://www.bissell.com/on/demandware.static/Sites-bissell-Site/-/default/dwd30d8e49/svg-icons/icon-satisfaction.svg" alt>
+                           </div>
+                        <span >30 Day Satisfaction Guarantee</span>
+                    </li>
+                    <li class="benefit-item Replenishments">
+                        <div class="thumb">
+                            <img src="https://www.bissell.com/on/demandware.static/-/Library-Sites-shared-library-bissell/default/dw9d5a99a8/icons/icon-AutoReplenishment_White_30x30.svg" alt width="26">
+                           </div>
+                        <span >Auto Replenishments</span>
+                    </li>
+                   
+                </ul>
+            
+            </section>
+
+        </main>
+        <div class="fix-btn">
+            <button class="btn-top">
+                <span class="blind">back to top</span>
+                <svg class="icon icon-icon-backtotop icon-icon-backtotop-dims " role="img" viewBox="0 0 42 42">
+                <g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="20" cy="20" r="20" fill="#F2F2F2" stroke="#003F7C" stroke-width="2"></circle><path fill="#003F7C" d="M14.578 23.737l5.914-6.247 5.946 6.247c.784.844 2.124-.54 1.307-1.384l-6.698-7.125c-.294-.304-.784-.304-1.046 0l-6.763 7.125c-.784.844.555 2.228 1.34 1.384z"></path></g></svg>
+            </button>
+        </div>
+
+
+        <footer id="footer">
+            <div class="footer-inner">
+              
+              <div class="footer-top">
+                  <div class="col-left">
+                      <div class="group-title">
+                          <h2 class="blind">Bissell footer</h2>
+                          <div class="footer-logo">
+                              <img src="https://www.bissell.com/on/demandware.static/Sites-bissell-Site/-/default/dw9d18a2b9/svg-icons/logo-bissell.svg" alt="">
+                          </div>
+              
+                      </div>
+                     <strong class="title">Get the Latest<br>from BISSELL</strong>
+                     <p class="desc">Sign up and save 10% off your<br>first BISSELL.com purchase</p>
+                     <div class="email-area">
+                        <label for="email">
+                            <input type="email"
+                                   id="email"
+                                   placeholder="Enter Email Address"
+                                   required>
+                          </label>
+                        <!-- <label for="footer-email">Enter Email Address
+                         <input type="email" id="footer-email"></label> -->
+                        
+                         <button class="btn-submit">
+                          <svg class="icon icon-icon-cta-arrow icon-icon-cta-arrow-dims " role="img" viewBox="0 0 17 12">
+                              <path fill="#0074B0" fill-rule="evenodd" d="M16.987 5.793a1.203 1.203 0 00-.413-.746L11.79.29a1.22 1.22 0 00-1.648.064 1.202 1.202 0 00-.064 1.638l2.78 2.765H1.215A1.21 1.21 0 000 5.964a1.21 1.21 0 001.214 1.207H12.86l-2.781 2.765a1.202 1.202 0 00-.269 1.314 1.218 1.218 0 001.98.4l4.858-4.829c.28-.28.394-.664.34-1.028z"></path></svg>
+                         </button>
+                     </div>
+                     <div class="sns-area">
+                      <ul class="sns-list">
+                          <li class="sns-item">
+                            <a href="">
+                                <img src="https://www.bissell.com/on/demandware.static/Sites-bissell-Site/-/default/dwea1ec4b9/svg-icons/icon-social-facebook.svg" alt>
+                                <span class="blind">facebook</span>
+                            </a>
+                        </li>
+                          <li class="sns-item">
+                            <a href="">
+                                <img src="https://www.bissell.com/on/demandware.static/Sites-bissell-Site/-/default/dwa9959806/svg-icons/icon-social-instagram.svg" alt>
+                                <span class="blind">instargram</span>
+                            </a>
+                        </li>
+                          <li class="sns-item">
+                            <a href="">
+                                <img src="https://www.bissell.com/on/demandware.static/Sites-bissell-Site/-/default/dwec6df8a0/svg-icons/icon-social-pinterest.svg" alt>
+                                <span class="blind">pinteret</span>
+                                </a>
+                            </li>
+                          <li class="sns-item">
+                            <a href="">
+                                <img src="https://www.bissell.com/on/demandware.static/Sites-bissell-Site/-/default/dw764248f8/svg-icons/icon-social-twitter.svg" alt>
+                                <span class="blind">twitter</span>
+                            </a>
+                        </li>
+                          <li class="sns-item">
+                            <a href="">
+                                <img src="https://www.bissell.com/on/demandware.static/Sites-bissell-Site/-/default/dw44b7bff8/svg-icons/icon-social-youtube.svg" alt>
+                                <span class="blind">youtube</span>
+                            </a>
+                        </li>
+                      </ul>
+                     </div>
+                  </div>
+                  <nav class="col-right">
+                      <ul class="tab-list">
+                          <li class="tab-item">
+                             <span class="title">Support Resources</span>
+                              <ul class="sub">
+                                  <li><a href="" class="sub-item">Customer Support</a></li>
+                                  <li><a href="" class="sub-item">Product Recalls</a></li>
+                                  <li><a href="" class="sub-item">Order Search </a></li>
+                                  <li><a href="" class="sub-item">Activate a Donation</a></li>
+                                  <li><a href="" class="sub-item">Email Us</a></li>
+                                  <li><a href="" class="sub-item">Returns</a></li>
+                                  <li><a href="" class="sub-item">Warranty</a></li>
+                                  <li><a href="" class="sub-item">Parts</a></li>
+                                  <li><a href="" class="sub-item">Service Center Locator</a></li>
+                                  <li><a href="" class="sub-item">SDS</a></li>
+                                  <li><a href="" class="sub-item">Ingredients List</a></li>
+                                  
+                              </ul>
+                          </li>
+                          <li class="tab-item">
+                             <span class="title">Support Resources</span>
+                              <ul class="sub">
+                                  <li><a href="" class="sub-item">My Profile</a></li>
+                                  <li><My href="" class="sub-item">My Rewards</a></li>
+                                  <li><a href="" class="sub-item">My Email Subscriptions</a></li>
+                                  <li><a href="" class="sub-item">Returns</a></li>
+                              </ul>
+                          </li>
+                          <li class="tab-item">
+                             <span class="title">Support Resources</span>
+                              <ul class="sub">
+                                  <li><a href="" class="sub-item">Customer Support</a></li>
+                                  <li><a href="" class="sub-item">Order Search</a></li>
+                                  <li><a href="" class="sub-item">Email Us</a></li>
+                                  <li><a href="" class="sub-item">Returns</a></li>
+                              </ul>
+                          </li>
+                          <li class="tab-item">
+                             <span class="title">Support Resources</span>
+                              <ul class="sub">
+                                  <li><a href="" class="sub-item">Customer Support</a></li>
+                                  <li><a href="" class="sub-item">Order Search</a></li>
+                                  <li><a href="" class="sub-item">Email Us</a></li>
+                                  <li><a href="" class="sub-item">Returns</a></li>
+                              </ul>
+                          </li>
+                          
+              
+                      </ul>
+                  </nav>
+              </div>
+              <div class="footer-mid">
+                  <span class="title">
+                      our partners:
+                  </span>
+                  <ul class="partners-list">
+                      
+                      <li class="partners-item pawsivively">
+                          <a href="">
+                            <img src="https://www.bissell.com/on/demandware.static/-/Library-Sites-shared-library-bissell/default/dw0dcbc1c8/footer-images/logo-pawsitively-clean.svg" alt>
+                            <span class="blind">pawsivively clean</span>
+                        </a>
+                      </li>
+                      <li class="partners-item biggreen">
+                          <a href="">
+                            <img src="https://www.bissell.com/on/demandware.static/-/Library-Sites-shared-library-bissell/default/dw88d46306/footer-images/logo-bissell-green.svg" alt>
+                            <span class="blind">bissell biggreen commercial</span>
+                        </a>
+                      </li>
+                      <li class="partners-item foundation">
+                          <a href="">
+                            <img src="https://www.bissell.com/on/demandware.static/-/Library-Sites-shared-library-bissell/default/dw609205df/footer-images/logo-bpf.svg" alt width="145">
+                            <span class="blind">Bissell pet foundation</span>
+                        </a>
+                      </li>
+                      <li class="partners-item inspired">
+                          <a href="">
+                            <img src="https://www.bissell.com/on/demandware.static/-/Library-Sites-shared-library-bissell/default/dw1f1f8578/footer-images/logo-pet-inspired.svg" alt>
+                            <span class="blind">pet inspired</span>
+                        </a>
+                      </li>
+                      <li class="partners-item sanitaire">
+                          <a href="">
+                            <img src="https://www.bissell.com/on/demandware.static/-/Library-Sites-shared-library-bissell/default/dwf629a9a4/footer-images/logo-sanitaire.svg" alt width="90">
+                            <span class="blind">sanitaire</span>
+                        </a>
+                      </li>
+                      <li class="partners-item Febreze">
+                          <a href="">
+                           <img src="https://www.bissell.com/on/demandware.static/-/Library-Sites-shared-library-bissell/default/dwbce1bd7e/footer-images/logo-febreze.png" alt width="93">
+                            <span class="blind">Febreze</span>
+                        </a>
+                      </li>
+              
+                  </ul>
+              </div>
+              <div class="footer-bottom">
+                  <small class="copy">© 2004-2024 BISSELL Inc., All Rights Reserved.<br><a href="" class="city">United States</a></small>
+                  
+                  <div class="postscript-area">
+                      <ul class="list">
+                          <li class="item"><a href="">Privacy Policy</a></li>
+                          <li class="item"><a href="">Terms of Service</a></li>
+                          <li class="item"><a href="">Website Accessibility Statement</a></li>
+                          <li class="item"><a href="">California Supply Chains Act</a></li><br class="m">
+                          <li class="item"><a href="">Do Not "Sell" Or "Share" My Personal Information</a></li>
+                          <li class="item"><a href="">Cookie Settings</a></li>
+                          <li class="item"><a href="">Idea Submissions</a></li>
+                          <li class="item"><a href="">Patents</a></li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+        </footer>
+    </div>
+</body>
+</html>
